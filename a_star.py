@@ -26,6 +26,7 @@ def a_star_algorithm(draw, grid, start, end):
 
     open_set_hash = {start}
 
+    # move through each node in the open set
     while not open_set.empty():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -34,24 +35,30 @@ def a_star_algorithm(draw, grid, start, end):
         current = open_set.get()[2]
         open_set_hash.remove(current)
 
+
         if current == end:
             reconstruct_path(came_from, end, draw)
             end.make_end()
             return True
 
+        #  creates a temp g_score for each neighbour of a given node
         for neighbour in current.neighbours:
             temp_g_score = g_score[current] + 1
 
+            #  if the temp g score is less than current g score it is updated
+            #  also assigns the node which came before the neighbour
             if temp_g_score < g_score[neighbour]:
                 came_from[neighbour] = current
                 g_score[neighbour] = temp_g_score
                 f_score[neighbour] = temp_g_score + h(neighbour.get_pos(), end.get_pos())
+                #  if the neighbour is not in open_set add to open set
                 if neighbour not in open_set_hash:
                     count += 1
                     open_set.put((f_score[neighbour], count, neighbour))
                     open_set_hash.add(neighbour)
                     neighbour.make_open()
         draw()
+        # once all neighbours have been explored close the current node
         if current != start:
             current.make_closed()
     return False
