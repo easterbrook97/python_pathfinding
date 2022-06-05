@@ -16,5 +16,5 @@ def reconstruct_path(came_from, current, draw):
         draw()
 
 
-def greedy_search(draw, grid, start, end):
+def greedy_algorithm(draw, grid, start, end):
     pass

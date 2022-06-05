@@ -178,7 +178,7 @@ def main(win, width):
                         for node in row:
                             node.update_neighbours(grid)
 
-                    a_star.algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
+                    a_star.a_start_algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
                 if event.type == pygame.K_2:
                     if event.key == pygame.K_SPACE and start and end:
@@ -186,7 +186,7 @@ def main(win, width):
                             for node in row:
                                 node.update_neighbours(grid)
 
-                    greedy.greedy_search(lambda: draw(win, grid, ROWS, width), grid, start, end)
+                    greedy.greedy_algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
                 if event.key == pygame.K_c:
                     start = None
