@@ -14,7 +14,7 @@ def reconstruct_path(came_from, current, draw):
         current.make_path()
         draw()
 
-def a_start_algorithm(draw, grid, start, end):
+def a_star_algorithm(draw, grid, start, end):
     count = 0
     open_set = PriorityQueue()
     open_set.put((0, count, start))

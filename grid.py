@@ -178,7 +178,7 @@ def main(win, width):
                         for node in row:
                             node.update_neighbours(grid)
 
-                    a_star.a_start_algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
+                    a_star.a_star_algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
                 if event.type == pygame.K_2:
                     if event.key == pygame.K_SPACE and start and end:
