@@ -180,13 +180,13 @@ def main(win, width):
 
                     a_star.algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
-            if event.type == pygame.K_2:
-                if event.key == pygame.K_SPACE and start and end:
-                    for row in grid:
-                        for node in row:
-                            node.update_neighbours(grid)
+                if event.type == pygame.K_2:
+                    if event.key == pygame.K_SPACE and start and end:
+                        for row in grid:
+                            for node in row:
+                                node.update_neighbours(grid)
 
-                        pass
+                    greedy.greedy_search(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
                 if event.key == pygame.K_c:
                     start = None
