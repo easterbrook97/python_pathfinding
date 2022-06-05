@@ -1,5 +1,6 @@
 import pygame
 import a_star
+import greedy
 
 # window dimensions
 WIDTH = 600
@@ -170,13 +171,22 @@ def main(win, width):
                     start = None
                 elif node == end:
                     end = None
+
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and start and end:
+                if event.key == pygame.K_1 and start and end:
                     for row in grid:
                         for node in row:
                             node.update_neighbours(grid)
 
                     a_star.algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
+
+            if event.type == pygame.K_2:
+                if event.key == pygame.K_SPACE and start and end:
+                    for row in grid:
+                        for node in row:
+                            node.update_neighbours(grid)
+
+                        pass
 
                 if event.key == pygame.K_c:
                     start = None
